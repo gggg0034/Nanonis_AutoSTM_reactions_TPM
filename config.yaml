@@ -1,0 +1,60 @@
+simulation_mode: True   # Options: True, False 
+                          # true: only in demo mode of nanonis. Please set to False when running on real experiment.
+
+# Size of the scanning area
+Scan_edge: '8n'  # Unit:meters (m) Example: '8n', '10n', '5n' Note: Data type is string
+
+# Tip movement speed for switching the scanning window
+zoom_in_tip_speed: '10n' # Unit: meters/second (m/s) Example: '2n', '1.5n', '3n' Note: Data type is string
+
+# Tip movement speed for switching between different molecules
+tip_manipulate_speed: '10n' # Unit: meters/second (m/s) Example: '1n', '0.5n', '2n' Note: Data type is string
+
+# Parameters for lattice shape
+lattice_shape: 'all'   # Options: Select the shape of molecules within the scanning area
+                          #'triangle'  Select a specific size triangle
+                          #'all'       Select all molecules
+                          #'costom'    Pop up UI for custom molecule selection
+                          #'kagome'    Select a kagome lattice molecule
+                          #'honeycomb' Select a honeycomb lattice molecule
+                          #'kagome_lattice' Select all kagome lattice molecules
+                          #'honeycomb_lattice' Select all honeycomb lattice molecules
+                          #'kagome_lattice_all' Continuously operate on all kagome_lattice molecules
+                          #'honeycomb_lattice_all' Continuously operate on all honeycomb_lattice molecules
+
+# Triangle size
+tri_size: 5  # Specifies the size of the triangle, effective only when lattice_shape is 'triangle' Note: Data type is integer
+
+# Tip initialization mode
+tip_init_mode: 'new'  # Options: 'new', 'latest' 
+                    # Default mode is 'new'. mode = 'new': The tip is initialized to the center and creates a new log folder.
+                    # mode = 'latest': Load the latest checkpoint.
+
+# Voltage parameter
+voltage: '-4.05'  # Unit: volts (V) Example: '-4.05', '3.1', '500m' Note: Data type is string. Voltage parameter for tip operation.
+
+# Current parameter
+current: '0.06n'  # Unit: amperes (A) Example: '0.06n', '10p', '5n' Note: Data type is string. Setpoint for tip operation.
+
+# Threshold parameter
+threshold: '20p'  # Determines whether the reaction is successful based on the change in Z-direction (tip height) before and after tip operation. If the change exceeds this value, the reaction is considered successful, and the current molecule will no longer be operated on. Unit: meters (m) Note: Data type is string.
+
+# Maximum number of iterations in one molecule
+max_iterations: 3  # The maximum number of attempts for tip operation. If the molecule still does not react, the operation on the current molecule will be abandoned. Note: Data type is integerT
+
+# Maximum number of times scanning the same position
+max_rescan_times: 3  # If there are still non-reactive molecules, attempt the pulse operation.
+# dont set this value to 0!!!
+
+# Pulse mode parameters
+bias_rise_factor: 0.05  # The factor to increase the tip bias in pulse. 
+# Example: if bias_rise_factor is 0.0 and first pulse is 4V. In the second scan, the pulse bias will be 4*(1 + 0.05)V  
+
+# current_rise_factor
+current_rise_factor: 0.05  # The factor to increase the tip current in pulse.
+# Same as bias_rise_factor.
+
+# key_point_ditection_factor
+key_point_ditection_factor: 0.9  # The factor to detect the key points, default is 0.9
+# 1.0 means the key points will detected the whole scanning image.
+# 0.5 means the key points will detected nothing.
